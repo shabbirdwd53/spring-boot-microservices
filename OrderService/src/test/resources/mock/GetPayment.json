@@ -1,0 +1,8 @@
+{
+  "paymentId": 1,
+  "paymentMode": "CASH",
+  "status": "SUCCESS",
+  "amount": 500,
+  "paymentDate": "2022-03-20T10:06:10.060802Z",
+  "orderId": 1
+}
