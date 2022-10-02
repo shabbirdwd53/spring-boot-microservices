@@ -32,7 +32,6 @@ public class OrderServiceApplication {
 	private OAuth2AuthorizedClientRepository oAuth2AuthorizedClientRepository;
 
 	@Bean
-	@LoadBalanced
 	public RestTemplate restTemplate() {
 		RestTemplate restTemplate
 				= new RestTemplate();

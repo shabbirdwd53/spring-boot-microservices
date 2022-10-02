@@ -45,6 +45,10 @@ resilience4j:
         sliding-window-size: 10
         sliding-window-type: COUNT_BASED
 
+microservice:
+  product: http://product-service-svc/product/
+  payment: http://payment-service-svc/payment/
+
 #eureka:
 #  instance:
 #    prefer-ip-address: true
