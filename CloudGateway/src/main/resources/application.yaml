@@ -2,10 +2,13 @@ server:
   port: 9090
 
 spring:
+  redis:
+    host: redis
+    port: 6379
   application:
     name: API-GATEWAY
   config:
-    import: configserver:http://${CONFIG_SERVER_URL:localhost}:9296
+    import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
   cloud:
     gateway:
       routes:

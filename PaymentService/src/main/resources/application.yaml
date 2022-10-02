@@ -15,4 +15,4 @@ spring:
   application:
     name: PAYMENT-SERVICE
   config:
-    import: configserver:http://localhost:9296
+    import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}

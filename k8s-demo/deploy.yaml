@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: my-namespace
+  name: service-registry-app
+spec:
+  selector:
+    matchLabels:
+      app: service-registry-app
+  template:
+    metadata:
+      labels:
+        app: service-registry-app
+    spec:
+      containers:
+      - name: service-registry-app
+        image: dailycodebuffer/serviceregistry:latest
+        ports:
+        - containerPort: 8761
