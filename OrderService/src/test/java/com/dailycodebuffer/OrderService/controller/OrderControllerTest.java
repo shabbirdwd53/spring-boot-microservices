@@ -177,7 +177,7 @@ public class OrderControllerTest {
     }
 
 
-    @Test
+
     public void test_WhenGetOrder_Success() throws Exception {
         MvcResult mvcResult
                 = mockMvc.perform(MockMvcRequestBuilders.get("/order/1")
