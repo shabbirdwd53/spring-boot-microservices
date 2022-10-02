@@ -9,6 +9,7 @@ import org.springframework.cloud.client.circuitbreaker.Customizer;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import reactor.core.publisher.Mono;
 
 @SpringBootApplication
@@ -20,9 +21,15 @@ public class CloudGatewayApplication {
 	}
 
 
-	@Bean
+	/*@Bean
 	KeyResolver userKeySolver() {
 		return exchange -> Mono.just("userKey");
+	}*/
+	@Bean
+	KeyResolver authUserKeyResolver() {
+		return exchange -> ReactiveSecurityContextHolder.getContext()
+				.map(ctx -> ctx.getAuthentication()
+						.getCredentials().toString());
 	}
 
 	@Bean
