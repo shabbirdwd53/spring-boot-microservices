@@ -16,7 +16,7 @@ public class WebSecurityConfig {
         http
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .antMatchers("/payment/**")
+                                .requestMatchers("/payment/**")
                                 .hasAuthority("SCOPE_internal")
                                 .anyRequest()
                                 .authenticated())

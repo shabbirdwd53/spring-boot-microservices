@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/shabbirdwd53/spring-app-config
+          uri: https://github.com/shabbirdwd53/spring-app-config2
           clone-on-start: true
 
 
