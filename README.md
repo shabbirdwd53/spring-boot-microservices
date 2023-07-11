@@ -1,13 +1,13 @@
-# Spring boot and Microservice with Kubernates 
+# Spring boot and Microservice with Kubernetes 
 Spring demo with Microservice and Kubernetes
 
 
-## Running kubernates dashboard
+## Running Kubernetes dashboard
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
 
 - kubectl proxy
 
-- Get token : kubectl -n kubernetes-dashboard create token admin-user
+- Get token: kubectl -n kubernetes-dashboard create token admin-user
 
 ## Understanding building individual Microservice
 
@@ -15,25 +15,25 @@ Each microservice contains pom.xml. Before building make sure the docker hub cre
 
 To run only build : mvn clean install
 
-To build and push to docker : mvn clean install jlib:build
+To build and push to docker: mvn clean install jib:build
 
-## Applying kubernates configuration to make pod running.
+## Applying Kubernetes configuration to make pod run.
 
-Go to k8s directory which contains 
-- Apply config maps first : kubectl apply -f generic-config-map.yaml
-- Setting up mysql pod : kubectl apply -f mysql.yaml
-This yaml contains mysql password as well , you can use secrets/config for passwords too.
-- Set up zipkin : kubectl apply -f zipkin.yaml
-Access zipkin dashboard with http://localhost:9411 which was exposed using loadbalancer
-- Set up service registry pod : kubectl apply -f service-registry-deployment.yaml
-- Set up config server pod : kubectl apply -f config-service-deployment.yaml
-- Set up cloud gateway pod : kubectl apply -f cloud-gateway-deployment.yaml
-- Set up other microservices pod : kubectl apply -f payment-service-deployment.yaml/order-service-deployment.yaml/product-service-deployment.yaml
+Go to the k8s directory which contains 
+- Apply config maps first: kubectl apply -f generic-config-map.yaml
+- Setting up mysql pod: kubectl apply -f mysql.yaml
+This YAML contains mysql passwords as well , you can use secrets/config for passwords too.
+- Set up Zipkin: kubectl apply -f zipkin.yaml
+Access Zipkin dashboard with http://localhost:9411 which was exposed using load balancer
+- Set up service registry pod: kubectl apply -f service-registry-deployment.yaml
+- Set up config server pod: kubectl apply -f config-service-deployment.yaml
+- Set up cloud gateway pod: kubectl apply -f cloud-gateway-deployment.yaml
+- Set up other microservices pod: kubectl apply -f payment-service-deployment.yaml/order-service-deployment.yaml/product-service-deployment.yaml
 
 ## Related to OKTA Configuration
-First create new application in okta . Application type should be open id application.
-Authroization server has configuration related to access token and refresh token validity. 
+First, create a new application in okta . The application type should be open id application.
+Authorization server has a configuration related to access token and refreshes token validity. 
 
 Go to security -> API -> default audience to modify access policies and timing.
 
-To get refresh token , we need to ensure we have grant type refresh token for application and also scope is offline_access provided when retriving tokens. Refer application yaml of cloud gateway.
+To get a refresh token, we need to ensure we have grant type refresh token for the application, and also scope is offline_access provided when retrieving tokens. Refer to application yaml of cloud gateway.
